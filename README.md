@@ -38,8 +38,7 @@ API
 * __classify(content, callback)__ - categorization the given articles.
 * __suggest(term, callback)__ - Get relative words.
 * __convert_time(time, callback)__ - Time convert.
-* 
-tag
+
 ---
 
 POS Tagging use [宾州大学标准](http://www.cis.upenn.edu/~chinese/posguide.3rd.ch.pdf)
