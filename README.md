@@ -1,12 +1,10 @@
 BosonNLP
 ========
-This is a fork of the original bosonnlp project. 
+This is a fork of the original bosonnlp project. BosonNLP is a node sdk for http://bosonnlp.com. 
 
+Changes from original bosonnlp project
+------------
 1. Add conver_time support
-
-BosonNLP is a node sdk for http://bosonnlp.com .
-
-[![NPM](https://nodei.co/npm/bosonnlp.png?stars&downloads)](https://nodei.co/npm/bosonnlp/) [![NPM](https://nodei.co/npm-dl/bosonnlp.png)](https://nodei.co/npm/bosonnlp/)
 
 Installation
 ------------
