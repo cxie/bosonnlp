@@ -1,19 +1,19 @@
 'use strict';
 
-var bosonnlp = require('../index');
-var boson = new bosonnlp.BosonNLP("YOUR_API");
+var bosonnlp = require('../lib/bosonnlp');
+var boson = new bosonnlp("");
 
 exports.testPunctuation = function (test) {
 	var text = "[成都商报]记者 姚永忠";
 	boson.ner("[成都商报]记者 姚永忠", function (data) {
-		data = JSON.parse(data)[0]; 
+		data = JSON.parse(data)[0];
 		var entity = data.entity[0];
 		test.equal(data.word.slice(entity[0], entity[1]).join(''), "成都商报");
 		test.equal(entity[2], "product_name");
 	});
 
 	boson.ner("成都商报,记者 姚永忠", function (data) {
-		data = JSON.parse(data)[0]; 
+		data = JSON.parse(data)[0];
 		var entity = data.entity[0];
 		test.equal(data.word.slice(entity[0], entity[1]).join(''), "成都商报");
 		test.equal(entity[2], "product_name");
@@ -24,10 +24,20 @@ exports.testPunctuation = function (test) {
 exports.testNerSingle = function (test) {
 	var text = "成都商报记者 姚永忠";
 	boson.ner(text, function (data) {
-		data = JSON.parse(data)[0]; 
+		data = JSON.parse(data)[0];
 		var entity = data.entity[0];
 		test.equal(data.word.slice(entity[0], entity[1]).join(''), "成都商报");
 		test.equal(entity[2], "product_name");
+		test.done();
+	});
+};
+
+exports.testConvertTime = function (test) {
+	var time = '2013年二月二十八日下午四点三十分二十九秒';
+	boson.convert_time(time, function (data) {
+		data = JSON.parse(data);
+		test.deepEqual(data.timestamp, "2013-02-28 16:30:29");
+		test.deepEqual(data.type, "timestamp");
 		test.done();
 	});
 };
@@ -55,7 +65,7 @@ exports.testNerMulti = function (test) {
 exports.testTagSingle = function (test) {
 	var text = "这个世界好复杂";
 	boson.tag(text, function (data) {
-		data = JSON.parse(data)[0]; 
+		data = JSON.parse(data)[0];
 		test.deepEqual(data.tag, ["DT", "M", "NN", "AD", "VA"]);
 		test.deepEqual(data.word, ["\u8fd9", "\u4e2a", "\u4e16\u754c", "\u597d", "\u590d\u6742"]);
 		test.done();
@@ -65,7 +75,7 @@ exports.testTagSingle = function (test) {
 exports.testTagMulti = function (test) {
 	var text = ['这个世界好复杂', '计算机是科学么'];
 	boson.tag(text, function (data) {
-		data = JSON.parse(data); 
+		data = JSON.parse(data);
 		test.deepEqual(data[0].tag, ["DT", "M", "NN", "AD", "VA"]);
 		test.deepEqual(data[0].word, ["\u8fd9", "\u4e2a", "\u4e16\u754c", "\u597d", "\u590d\u6742"]);
 		test.deepEqual(data[1].tag, ["NN", "VC", "NN", "SP"]);
@@ -123,22 +133,3 @@ exports.testSuggest = function (test) {
 		test.done();
 	});
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
