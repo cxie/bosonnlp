@@ -2,7 +2,7 @@ BosonNLP
 ========
 This is a fork of the original bosonnlp project. BosonNLP is a node sdk for http://bosonnlp.com. 
 
-Changes from original bosonnlp project
+Changes log
 ------------
 1. Add conver_time support
 
