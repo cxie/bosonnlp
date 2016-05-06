@@ -2,7 +2,7 @@
 'use strict';
 
 var bosonnlp = require('./lib/bosonnlp');
-var boson = new bosonnlp("");
+var boson = new bosonnlp("YOUR_API_KEY");
 
 var data = '2013年二月二十八日下午四点三十分二十九秒';
 boson.tag(data, function (results) {

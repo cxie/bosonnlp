@@ -1,7 +1,7 @@
 'use strict';
 
 var bosonnlp = require('../lib/bosonnlp');
-var boson = new bosonnlp("");
+var boson = new bosonnlp("YOUR_API_KEY");
 
 exports.testPunctuation = function (test) {
 	var text = "[成都商报]记者 姚永忠";
