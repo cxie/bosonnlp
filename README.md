@@ -17,8 +17,8 @@ Usage
 -----
 
 ```javascript
-var bosonnlp = require('bosonnlp');
-var nlp = new bosonnlp.BosonNLP('YOUR_API_KEY');
+var bosonnlp = require('./lib/bosonnlp');
+var boson = new bosonnlp("YOUR_API_KEY");
 nlp.ner('成都商报记者 姚永忠', function (result) {
 	console.log(result);
 });
@@ -37,15 +37,16 @@ API
 * __depparser(content, callback)__ - Work out the grammatical structure of sentences
 * __classify(content, callback)__ - categorization the given articles.
 * __suggest(term, callback)__ - Get relative words.
-
+* __convert_time(time, callback)__ - Time convert.
+* 
 tag
 ---
 
 POS Tagging use [宾州大学标准](http://www.cis.upenn.edu/~chinese/posguide.3rd.ch.pdf)
 
 ```javascript
-var bosonnlp = require('bosonnlp');
-var nlp = new bosonnlp.BosonNLP('YOUR_API_KEY');
+var bosonnlp = require('./lib/bosonnlp');
+var boson = new bosonnlp("YOUR_API_KEY");
 
 var text = "这个世界好复杂";
 boson.tag(text, function (data) {
@@ -76,8 +77,8 @@ ner
 ---
 
 ```javascript
-var bosonnlp = require('bosonnlp');
-var nlp = new bosonnlp.BosonNLP('YOUR_API_KEY');
+var bosonnlp = require('./lib/bosonnlp');
+var boson = new bosonnlp("YOUR_API_KEY");
 nlp.ner('成都商报记者 姚永忠', function (result) {
 	console.log(result);
 });
@@ -108,8 +109,8 @@ extractKeywords
 ---------------
 
 ```javascript
-var bosonnlp = require('bosonnlp');
-var nlp = new bosonnlp.BosonNLP('YOUR_API_KEY');
+var bosonnlp = require('./lib/bosonnlp');
+var boson = new bosonnlp("YOUR_API_KEY");
 var text = ["病毒式媒体网站：让新闻迅速蔓延"];
 nlp.extractKeywords(text, function (data) {
 	data = JSON.parse(data);
